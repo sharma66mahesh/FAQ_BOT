@@ -42,7 +42,8 @@ embeddings = OpenAIEmbeddings()
 docsearch = FAISS.from_texts(chunks_of_text, embeddings)
 
 # create chain for querying
-chain = load_qa_chain(ChatOpenAI(openai_api_key=OPENAI_API_KEY, model_name='gpt-3.5-turbo'), chain_type="stuff")
+chain = load_qa_chain(ChatOpenAI(
+    openai_api_key=OPENAI_API_KEY, model_name='gpt-3.5-turbo'), chain_type="stuff")
 
 # Query the pdf file
 docs = docsearch.similarity_search(query)
